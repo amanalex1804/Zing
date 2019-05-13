@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+
+
+
+<section id="newDoubt" class="newDoubt">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h3>Post Doubt</h3>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="newDoubt" id="newDoubt" action="/doubts" method="POST" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Title" name="title" id="title" required data-validation-required-message="Please enter a title."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Tags" name="tags" id="tags" required data-validation-required-message="Please enter a tags."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Start here" name="content" id="content" required data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-primary">POST</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+
+
+<% include ../partials/footer %>

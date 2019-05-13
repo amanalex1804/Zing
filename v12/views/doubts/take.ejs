@@ -1,0 +1,48 @@
+
+<% include ../partials/header %>
+
+<div class="container takeDoubt">
+       
+       <div class="row">
+
+       		<div class="col-md-2">
+       		</div>
+       		<div class="col-md-8">
+                   <h3> Solution </h3>
+               <form name="takeDoubt" id="takeDoubt" action="/doubts/<%= doubt._id %>/take" method="POST">
+
+               		<div class="row">
+               			<div class="col-md-12">
+               				<div class="form-group">
+               				 	<textarea class="form-control" name="take" id="textarea" placeholder="Solution"></textarea>
+
+               				</div>
+               				<div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-primary">POST</button>
+                            </div>
+
+               			</div>
+
+
+
+               		</div>
+
+
+
+               </form>
+
+       		</div>
+
+
+       </div>
+
+
+
+
+
+</div> 
+
+
+<% include ../partials/footer %>

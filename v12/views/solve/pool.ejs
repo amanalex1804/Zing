@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+
+   <div class="ui main text container">
+   		<div class="ui top attached segment">
+   			<div class="ui divided items">
+   				<% feeds.forEach(function(items){ %>
+   					<div class="item">
+   						<div class = "content">
+   							<a class="header" href="#" ><%= items.company %></a>
+	   						<div class="meta">
+	   							<span><p>YO</p></span>
+	   						</div>	
+	   						<div class="description">
+	   							<p>LOL </p>
+	   						</div>
+                <div>
+                 <h3>Cashback</h3>
+                 <p><%= items.cashback %></p>
+                 </div>
+	   						   <div class="extra">
+                       <a class="ui floated basic violet button" href="#">Edit
+                       <i class="right chevron icon"></i>
+                       </a>
+                       <a class="ui floated basic red button pull-right" href="/take/<%= items._id%>">Take
+                       <i class="right chevron icon"></i>
+                        </a>
+                     </div>
+   						</div>
+   					</div>
+   				<% }) %>
+   			</div>
+   		</div>
+   </div>
+
+
+
+<% include ../partials/footer %>

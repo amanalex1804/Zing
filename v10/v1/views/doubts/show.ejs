@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+
+<div class="container showdoubts">
+	<div class="row">
+        <div class="col-md-2">
+               
+        </div>
+	 	<div class="col-md-8">
+          <h4> <%= doubt.title %> <h4>
+	 	 	<div class="contents">
+	 	 	<h1><%= doubt._id %> </h1>
+            <pre><%= doubt.content %> </pre>
+	 	 	</div>
+	 	 	<p>Submitted by
+						<em><%= doubt.author.username%>
+							</em>
+						</p>
+
+		 			<% if(currentUser && doubt.author.id.equals(currentUser._id)) { %>
+									<a class="btn btn-warning" href="/doubts/<%= doubt._id%>/edit">Edit</a>	
+									<form class="del" id="delete-form" action="/doubts/<%= doubt._id%>?_method=DELETE" method="POST">
+										<button class="btn btn-danger pull-right">Delete</button>
+									</form>
+							<% }  else {%>
+								<a class="btn btn-success" href="/doubts/<%= doubt._id %>/take">Take</a>
+								<% } %>
+         </div>
+    </div>  
+ </div>  
+
+
+ <div class="container showAnswers">
+ 		<div class="row">
+ 			<div class="col-md-2">
+ 			</div>
+ 			<div class="col-md-8">
+ 				<% if(currentUser && doubt.author.id.equals(currentUser._id)) { %>
+
+ 					<% doubt.answers.forEach(function(ans){ %>
+
+ 						<div class="container eachans">
+
+ 							<p><%= ans.author.username %> </p>
+ 							<pre><%= ans.content %> </pre>
+
+		
+
+
+
+ 						</div>
+
+ 					
+ 					<% }); %>
+
+
+
+ 				<% } %>
+
+
+ 			</div>
+
+
+
+ 		</div>
+
+
+ </div>
+
+
+
+
+
+<% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+

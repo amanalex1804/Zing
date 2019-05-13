@@ -1,0 +1,47 @@
+
+<% include ../partials/header %>
+
+<div class="ui main text container">
+	<div class="ui huge header"></div>
+	<div class="ui top attached segment">
+		<div class="ui divided items">
+
+		<% doubts.forEach(function(doubt){ %>
+		<div class="item">
+			<div class="image">
+				<img src="images/parallax/bg-01.jpg" >
+			</div>
+			<div class="content">
+				<a class="header" href="/doubts/<%= doubt._id %>"><%= doubt.title %></a>
+				<div class="meta">
+					<span> <%= doubt.created.toDateString() %></span>
+				</div>
+				<div class="description">
+					<% if (typeof doubt.body == 'undefined' ) { %>
+		            <p> no content</p>  
+		    	    <% } else { %>
+		            <p> <%= doubt.body.substring(0, 100) %>...</p>  
+		 			<% } %>
+		 		</div>
+		 			<div class="extra">
+		 			<a class="ui floated basic violet button" href="/doubts/<%= doubt._id %>">Read More
+		 				<i class="right chevron icon"></i>
+		 			</a>
+		 		</div>
+			</div>
+				
+				</div>
+				
+		 		
+			
+			
+			
+	
+<% }) %>
+
+</div>
+</div>
+</div>
+
+
+<% include ../partials/footer %>

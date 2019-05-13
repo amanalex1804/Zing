@@ -1,0 +1,21 @@
+<% include ../partials/header%>  
+
+<% if(currentUser.username == tutor) { %>
+ <form action="/report/<%=room%>" style ="margin : 250px 25px 100px 25px" method="POST">
+  <input type="radio" name="report" value="User was offline"> Offline User <br>
+  <input type="radio" name="report" value="Ill behaviour"> Ill behaviour<br>
+  <button>Submit</button>
+  
+</form>
+
+<% } else {%>
+
+<form action="/report/<%=room%>" style ="margin : 250px 25px 100px 25px" method="POST" >
+  <input type="radio" name="report" value="Tutor was offline"> Offline Tutor<br>
+  <input type="radio" name="report" value="Ill behaviour"> Ill behaviour<br>
+  <input type="radio" name="report" value="Not qualified"> Not able to solve problem <br>
+  <button> Submit</button>
+</form>
+
+<% } %>
+<% include ../partials/footer%>  

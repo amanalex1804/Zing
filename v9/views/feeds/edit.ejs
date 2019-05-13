@@ -1,0 +1,43 @@
+ <% include ../partials/header %>
+
+<section id="newPost" class="newPost">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h3>Edit Post</h3>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="newBlog" id="newBlog" action="/feeds/<%= feed.id %>?_method=PUT" method="POST" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="editFeed[title]" id="title" value="<%= feed.title %>"><%=feed.title %></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="editFeed[content]" id="content"><%= feed.content %></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-primary">POST</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+
+ 
+<% include ../partials/footer %> 

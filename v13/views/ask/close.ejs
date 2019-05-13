@@ -1,0 +1,18 @@
+
+<% include ../partials/header%>  
+
+<div class="list-group" id="woo" style="margin:200px 250px 25px 250px">
+<% if(currentUser.username!=tutor) { %>
+	<a href="/reopen/<%=room%>" class="list-group-item">Reopen</a>
+
+  <a href="/rate/<%=room%>" class="list-group-item">Rate</a>
+  <%} %>
+  <a href="/report/<%=room%>" class="list-group-item">Report</a>
+  <% if(currentUser.username==tutor){ %>
+     <a href="/closed/<%=room%>" class="list-group-item">Close</a>
+  <% } %>
+ 
+</div>
+
+
+<% include ../partials/footer%>  

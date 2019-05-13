@@ -1,0 +1,133 @@
+<% include ../partials/header %>
+
+<div class="container showfeeds">
+	<div class="row">
+        <div class="col-md-2">
+
+        </div>
+	 	<div class="col-md-8">
+          <h4> <%= feed.title %> <h4>
+	 	 	<div class="contents">
+	 	 	<h1><%= feed._id %> </h1>
+            <pre><%= feed.content %> </pre>
+	 	 	</div>
+	 	 	<p>Submitted by
+						<em><%= feed.author.username%>
+							</em>
+						</p>
+
+		 			<% if(currentUser && feed.author.id.equals(currentUser._id)) { %>
+									<a class="btn btn-warning" href="/feeds/<%= feed._id%>/edit">Edit</a>	
+									<form class="del" id="delete-form" action="/feeds/<%= feed._id%>?_method=DELETE" method="POST">
+										<button class="btn btn-danger pull-right">Delete</button>
+									</form>
+							<% }  else { %>
+							 <% if (alreadyLiked){ %>	
+									 <div>
+										<button type="button" id="likeButton" class="btn btn-info"  data-post-id="<%= feed._id %>">Unlike</button>
+										<button class="btn btn-info"id="likes-count-<%= feed._id %>" style="display:inline"><%= feed.likes_count %></button>
+									
+		                        
+							 <% } else { %>
+									 <div>
+										<button type="button" id="likeButton" class="btn btn-info"  data-post-id="<%= feed._id %>">Like</button>
+									<button class="btn btn-info" id="likes-count-<%= feed._id %>" style="display:inline"><%= feed.likes_count %></button>
+									
+
+							<% } %>
+
+		                          <a class="btn btn-danger pull-right" href="/rules/<%= feed._id %>/report">Report</a>
+
+ 					<% } %>
+
+          
+	 	</div>
+
+	</div>
+</div>
+
+<div class="container comments"> 
+	<div class="row">
+	     <div class="col-md-2">
+	     </div>
+	      <div class="col-md-8">
+              <h3> Comment</h3>
+           </div>
+      </div>        
+		<form action="/comments/<%= feed._id %>" method="POST">
+		<div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+					<div class="form-group">
+					 <input class="form-control" id="commenttext" type ="text" name = "comment[text]" placeholder="text">
+					 </div>
+				</div>
+				
+
+		</div>
+			<div class="row">
+			     <div class="col-md-2">
+			     </div>
+
+			     <div class="col-md-8">
+			            <div class="col-md-10">
+			            </div>
+						<div class="col-md-2">
+							<button class="btn btn-lg btn-primary btn-block">submit</button>
+						</div>
+				 </div>		
+	         </div>
+        </form>
+	
+
+</div>
+
+
+
+<h3><%= feed %> </h3>
+<div class="container showComments">
+    <% feed.comments.forEach(function(commen){ %>
+         
+         <h1><%= commen %> </h1>
+
+
+    	<div class="row">
+    		<div class="col-md-2">  		
+    	      
+                <strong><%= commen.author.username %> </strong>
+    		 </div> 
+    	</div>
+
+    	<div class="row">
+    		<div class="col-md-2">
+    		</div>
+    		<div class="col-md-8">
+                <p> <%= commen.text %> </p>
+    		</div>
+
+    	</div>
+
+  <%  })  %>
+	<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8"
+	</div>
+</div>
+
+
+
+<% include ../partials/footer %>
+
+
+
+
+
+
+
+
+
+
+
