@@ -22,7 +22,9 @@ var express      	= require("express"),
     const {isRealString} = require('./utils/validation');
 
     var url = "mongodb://localhost/zingf";
-    
+    var nodemailer = require('nodemailer');
+
+
 // connect to mongodb
    
    const mongo = require('mongodb').MongoClient;
@@ -93,6 +95,14 @@ app.use(function(req,res,next){
 });
 
 
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'kumarrocky436@gmai.com',
+        pass: 'alex2468'
+    }
+});
 
 
 /**

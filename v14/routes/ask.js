@@ -252,7 +252,7 @@ router.get("/reopen/:id",async function(req,res){
         console.log("mlaa");
         console.log(found);
         if(!found){
-          dbo.collection("review").insertOne({room : req.params.id});
+          dbo.collection("review").insertOne({room : req.params.id,tutor:req.user.username});
         }
       });
     
@@ -349,17 +349,26 @@ router.get("/report/:id",function(req,res){
 
 // isko dekho pura
 
-router.post("/report/:id",async function(req,res){
+router.post("/report/:id", function(req,res){
 
  
    mongo.connect(url,async function(err,db){
     if(err) throw err;
 
     var dbo = db.db("chatsdb");
-    var docs = await dbo.collection("report").insertOne({room : req.params.id,by:req.user.username,reason:req.body.report});
+    dbo.collection("all").findOne({"room":req.params.id},async function(err,found){
+      console.log("kaa dikkat hai");
+      console.log(found.tutor.username);
+      if(found.tutor.username==req.user.username){
+            var docs = await dbo.collection("report").insertOne({room : req.params.id,for:found.author.username,reason:req.body.report});
+          }else{
+              var docs = await dbo.collection("report").insertOne({room : req.params.id,for:found.tutor.username,reason:req.body.report});
+          }
 
-    var docs = await dbo.collection("tutor").deleteMany({"room" : req.params.id,"tutor.username": req.user.username});
-    var docs = await dbo.collection("author").deleteMany({"room" : req.params.id,"author.username": req.user.username});
+    })
+
+     dbo.collection("tutor").deleteMany({"room" : req.params.id,"tutor.username": req.user.username});
+     dbo.collection("author").deleteMany({"room" : req.params.id,"author.username": req.user.username});
     
 
 
@@ -379,7 +388,7 @@ router.post("/report/:id",async function(req,res){
 
 
 
-router.get("/chats",async function(req,res){
+router.get("/chats",function(req,res){
 
   mongo.connect(url,async function(err,db){
     if(err) throw err;

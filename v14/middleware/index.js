@@ -18,7 +18,7 @@ middlewareObj.isSubscribed  = function(req,res,next){
     
     var microSecondsDiff = Math.abs(lastSubscribedTimeStamp-nowTimeStamp);
     var daysDiff = Math.floor(microSecondsDiff/(1000*60*60*24));
-    
+   
     if(daysDiff<=365){
     	req.flash("success","Valid upto "+(365-daysDiff)+" days");
     	return next();

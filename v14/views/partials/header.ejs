@@ -149,10 +149,17 @@
                                 <a class="page-scroll" href="/solve">Solve</a>
                             </li>
                       
-                             <li>
-                                <a class="page-scroll" href="/account"><%= currentUser.username %></a>
-                             </li>
+                             
 
+                            <% if(currentUser.username == 'Zing'){ %>
+                              <li>
+                                <a class="page-scroll" href="/admin"><%= currentUser.username %></a>
+                             </li>
+                            <% }else{ %>
+                                <li>
+                                  <a class="page-scroll" href="/account"><%= currentUser.username %></a>
+                                </li>
+                            <% } %>
                    
                           
                             <li>
