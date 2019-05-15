@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+
+   <div class="ui main text container" style ="margin:150px 125px 25px 125px">
+   		<div class="ui top attached segment">
+   			<div class="ui divided items">
+   				<% feeds.forEach(function(items){ %>
+            
+              <div class="item">
+              <div class = "content">
+             
+                  <a class="header" href="#" ><%=items.for %></a>
+            
+                
+                <div class="meta">
+                  <span><p>Rating : <%= items.reason%></p></span>
+                </div>  
+                <div class="description">
+              
+                </div>
+                <div>
+                 </div>
+                   <div class="extra" >
+                       
+                       <a class="ui floated basic red button pull-right" href="/admin/<%= items.room %>/<%=items.for%>">Open
+                       <i class="right chevron icon"></i>
+                        </a>
+                     </div>
+              </div>
+            </div>
+
+            
+   					
+   				<%}) %>
+   			</div>
+   		</div>
+   </div>
+
+
+
+<% include ../partials/footer %>

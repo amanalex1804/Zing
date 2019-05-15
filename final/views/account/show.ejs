@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+
+   <div class="ui main text container" style ="margin:150px 125px 25px 125px">
+   		<div class="ui top attached segment">
+   			<div class="ui divided items">
+   				<% feeds.forEach(function(items){ %>
+
+   					
+                  <div class="meta">
+                    <h4><%= items.from %> </h4>
+                 
+                </div>  
+                <br>
+                <div class="description">
+   					<% if(items.img =="0") { %>
+   							  	<p> <%= items.text%> </p>
+                           
+   					<% }else{ %>
+   						<a><img class="thumbnail" src="<%= items.text%>"/></a>
+   					<% } %>
+                </div>
+                                 
+                     
+              
+
+            
+   					
+   				<%}) %>
+   			</div>
+   		</div>
+   </div>
+
+
+
+
+<% include ../partials/footer %>
