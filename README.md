@@ -1,6 +1,6 @@
 # Zing
 
-A static website built using NodeJs and SocketIO . 
+A website built using NodeJs and SocketIO . 
 
 ## Features
 
